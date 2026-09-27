@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SIPrep.MainPage"
+             Title="TSLPRB SI Master Prep"
+             BackgroundColor="#F3F4F6">
+
+    <Grid>
+        <!-- Loading View -->
+        <VerticalStackLayout x:Name="LoadingLayout"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Spacing="16">
+            <ActivityIndicator IsRunning="True" Color="#1E3A8A" WidthRequest="48" HeightRequest="48" />
+            <Label Text="Loading 2,000 Questions &amp; Explanations..."
+                   TextColor="#1E3A8A"
+                   FontSize="15"
+                   FontAttributes="Bold" />
+        </VerticalStackLayout>
+
+        <!-- Main Content View -->
+        <ScrollView x:Name="MainContentScroll" IsVisible="False">
+            <VerticalStackLayout Spacing="20" Padding="16,16,16,32">
+                <!-- Hero Header Card -->
+                <Border BackgroundColor="#1E3A8A" StrokeThickness="0" StrokeShape="RoundRectangle 16" Padding="20">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="TSLPRB Police Sub-Inspector" TextColor="#93C5FD" FontSize="13" FontAttributes="Bold" />
+                        <Label Text="Preliminary Master Question Bank" TextColor="White" FontSize="20" FontAttributes="Bold" />
+                        <Label Text="6,000 Verified Questions across 30 Model Papers (Sets 01 – 30) with Step-by-Step Explanations, PDF Reader &amp; Shortcuts."
+                               TextColor="#E0E7FF" FontSize="13" LineHeight="1.2" />
+
+                        <!-- Quick Metric Chips -->
+                        <Grid ColumnDefinitions="*,*,*" Margin="0,10,0,0">
+                            <Border BackgroundColor="#1E40AF" StrokeThickness="0" StrokeShape="RoundRectangle 10" Padding="10,8" Margin="0,0,4,0">
+                                <VerticalStackLayout HorizontalOptions="Center">
+                                    <Label x:Name="TotalQuestionsLabel" Text="6,000" TextColor="White" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                                    <Label Text="Questions" TextColor="#93C5FD" FontSize="11" HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Column="1" BackgroundColor="#1E40AF" StrokeThickness="0" StrokeShape="RoundRectangle 10" Padding="10,8" Margin="4,0">
+                                <VerticalStackLayout HorizontalOptions="Center">
+                                    <Label Text="30" TextColor="White" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                                    <Label Text="Model Papers" TextColor="#93C5FD" FontSize="11" HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Column="2" BackgroundColor="#1E40AF" StrokeThickness="0" StrokeShape="RoundRectangle 10" Padding="10,8" Margin="4,0,0,0">
+                                <VerticalStackLayout HorizontalOptions="Center">
+                                    <Label Text="3 Series" TextColor="White" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                                    <Label Text="30 Official PDFs" TextColor="#93C5FD" FontSize="11" HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Quick Exam Practice Buttons -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <Button Text="⚡ 25-Q Quick Blitz"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            Clicked="OnQuickBlitzClicked" />
+                    <Button Grid.Column="1"
+                            Text="🎯 50-Q Mini Mock"
+                            BackgroundColor="#059669"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            Clicked="OnMiniMockClicked" />
+                </Grid>
+
+                <!-- Section: Model Papers (Sets 01 - 30) -->
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Model Question Papers (30 Papers • 3 Series)" TextColor="#1F2937" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="200 Qs + PDF each" TextColor="#6B7280" FontSize="12" VerticalOptions="Center" />
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="PapersContainer" Spacing="8">
+                        <!-- Populated programmatically -->
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Section: Practice by Subject -->
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Practice by Subject (Syllabus Units)" TextColor="#1F2937" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Tap to Practice" TextColor="#6B7280" FontSize="12" VerticalOptions="Center" />
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="SubjectsContainer" Spacing="8">
+                        <!-- Populated programmatically -->
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

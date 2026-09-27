@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FEF08A" />
+            <stop offset="50%" stop-color="#F59E0B" />
+            <stop offset="100%" stop-color="#B45309" />
+        </linearGradient>
+        <linearGradient id="goldLight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFFBEB" />
+            <stop offset="100%" stop-color="#FCD34D" />
+        </linearGradient>
+        <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#D97706" />
+            <stop offset="100%" stop-color="#78350F" />
+        </linearGradient>
+        <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1E40AF" />
+            <stop offset="50%" stop-color="#1E3A8A" />
+            <stop offset="100%" stop-color="#0F172A" />
+        </linearGradient>
+    </defs>
+
+    <g>
+        <!-- Shadow Base -->
+        <path d="M 228 89 C 290 89 335 114 335 164 C 335 254 280 324 228 359 C 176 324 121 254 121 164 C 121 114 166 89 228 89 Z" fill="#020617" opacity="0.4" />
+
+        <!-- Outer Shield Gold Border -->
+        <path d="M 228 85 C 290 85 335 110 335 160 C 335 250 280 320 228 355 C 176 320 121 250 121 160 C 121 110 166 85 228 85 Z" fill="url(#gold)" />
+
+        <!-- Inner Shield Navy Body -->
+        <path d="M 228 97 C 282 97 322 118 322 162 C 322 242 272 306 228 338 C 184 306 134 242 134 162 C 134 118 174 97 228 97 Z" fill="url(#shield)" />
+
+        <!-- Inner Gold Ring Trim -->
+        <path d="M 228 107 C 275 107 310 125 310 165 C 310 235 266 292 228 322 C 190 292 146 235 146 165 C 146 125 181 107 228 107 Z" fill="none" stroke="url(#gold)" stroke-width="2.5" opacity="0.7" />
+
+        <!-- Central Police SI Five-Pointed Star -->
+        <!-- Center at 228, 178 -->
+        <polygon points="228,128 240,166 280,166 248,190 260,228 228,204 196,228 208,190 176,166 216,166" fill="url(#gold)" stroke="#FFFBEB" stroke-width="1.5" />
+
+        <!-- 3D Star Facets (Light & Shadow) -->
+        <polygon points="228,128 228,204 240,166" fill="url(#goldLight)" />
+        <polygon points="228,128 228,204 216,166" fill="url(#goldDark)" />
+        <polygon points="280,166 228,204 248,190" fill="url(#goldLight)" />
+        <polygon points="260,228 228,204 248,190" fill="url(#goldDark)" />
+        <polygon points="176,166 228,204 208,190" fill="url(#goldDark)" />
+        <polygon points="196,228 228,204 208,190" fill="url(#goldLight)" />
+
+        <!-- Central Gem Star Core -->
+        <circle cx="228" cy="180" r="10" fill="#FFFBEB" />
+        <circle cx="228" cy="180" r="7" fill="url(#gold)" />
+
+        <!-- Bottom Banner Plate -->
+        <path d="M 152 254 L 304 254 L 314 286 L 228 292 L 142 286 Z" fill="url(#gold)" />
+        <path d="M 156 257 L 300 257 L 308 283 L 228 288 L 148 283 Z" fill="#0F172A" />
+
+        <!-- Vector Letters: 'S' and 'I' in gold -->
+        <!-- Letter S (around x=206, y=261 to 279) -->
+        <path d="M 216 264 C 214 262 211 261 206 261 C 201 261 198 263 198 266 C 198 270 202 271 207 272 C 213 273 218 275 218 280 C 218 285 212 288 206 288 C 199 288 195 285 194 281 L 198 280 C 199 283 202 285 206 285 C 210 285 214 283 214 280 C 214 276 210 275 205 274 C 199 273 194 271 194 266 C 194 261 199 258 206 258 C 211 258 215 260 217 263 Z" fill="url(#gold)" />
+
+        <!-- Letter I (around x=244, y=261 to 279) -->
+        <path d="M 238 259 L 254 259 L 254 262 L 248 262 L 248 284 L 254 284 L 254 287 L 238 287 L 238 284 L 244 284 L 244 262 L 238 262 Z" fill="url(#gold)" />
+
+        <!-- Lower Badge Ribbon: 'PREP' -->
+        <rect x="198" y="298" width="60" height="16" rx="8" fill="url(#gold)" />
+        <rect x="200" y="300" width="56" height="12" rx="6" fill="#0F172A" />
+        <circle cx="228" cy="306" r="3.5" fill="url(#gold)" />
+    </g>
+</svg>

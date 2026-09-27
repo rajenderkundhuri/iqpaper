@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SIPrep.QuizPage"
+             Title="Practice Session"
+             BackgroundColor="#F4F6F9">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <!-- Header & Progress -->
+        <Border Grid.Row="0" BackgroundColor="#1E3A8A" Padding="16,12" StrokeThickness="0">
+            <VerticalStackLayout Spacing="6">
+                <Grid ColumnDefinitions="*,Auto,Auto,Auto">
+                    <Label x:Name="SessionTitleLabel" Text="Model Paper 01" TextColor="White" FontSize="15" FontAttributes="Bold" VerticalOptions="Center" LineBreakMode="TailTruncation" />
+                    <!-- Real-Time Exam Countdown Timer -->
+                    <Border Grid.Column="1" x:Name="TimerBadge" BackgroundColor="#1E40AF" StrokeThickness="0" Padding="8,4" StrokeShape="RoundRectangle 8" Margin="0,0,8,0">
+                        <Label x:Name="TimerLabel" Text="⏱️ 03:00:00" TextColor="#FDE047" FontSize="13" FontAttributes="Bold" VerticalOptions="Center" />
+                    </Border>
+                    <Label x:Name="QuestionCounterLabel" Grid.Column="2" Text="Q 1 / 200" TextColor="#93C5FD" FontSize="13" FontAttributes="Bold" Margin="0,0,8,0" VerticalOptions="Center" />
+                    <Button x:Name="FlagBtn" Grid.Column="3" Text="☆" TextColor="White" BackgroundColor="#2563EB" CornerRadius="16" WidthRequest="36" HeightRequest="36" Padding="0" Clicked="OnFlagClicked" />
+                </Grid>
+                <ProgressBar x:Name="QuizProgressBar" Progress="0.05" ProgressColor="#60A5FA" HeightRequest="6" />
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Subject Badge & Status Strip -->
+        <Border Grid.Row="1" BackgroundColor="#FFFFFF" StrokeThickness="0" Padding="16,8">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Border x:Name="SubjectBadge" BackgroundColor="#0288D1" StrokeThickness="0" Padding="10,4" StrokeShape="RoundRectangle 12">
+                    <Label x:Name="SubjectLabel" Text="Arithmetic" TextColor="White" FontSize="12" FontAttributes="Bold" />
+                </Border>
+                <Label x:Name="ScoreSummaryLabel" Grid.Column="2" Text="Score: 0 | Accuracy: 0%" TextColor="#4B5563" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <!-- Question & Options ScrollView -->
+        <ScrollView Grid.Row="2" Padding="16">
+            <VerticalStackLayout Spacing="14">
+                <!-- Question Card -->
+                <Border BackgroundColor="White" Stroke="#E5E7EB" StrokeThickness="1" Padding="18" StrokeShape="RoundRectangle 12">
+                    <Label x:Name="QuestionTextLabel"
+                           Text="Question text will appear here..."
+                           TextColor="#1F2937"
+                           FontSize="16"
+                           LineHeight="1.3"
+                           FontAttributes="Bold" />
+                </Border>
+
+                <!-- Options A, B, C, D -->
+                <VerticalStackLayout Spacing="10">
+                    <!-- Option A -->
+                    <Border x:Name="OptBorderA" BackgroundColor="White" Stroke="#D1D5DB" StrokeThickness="1.5" Padding="14" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOptionATapped" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Text="A" TextColor="#1E3A8A" FontSize="15" FontAttributes="Bold" WidthRequest="26" VerticalOptions="Center" />
+                            <Label x:Name="OptTextA" Grid.Column="1" Text="Option A text" TextColor="#1F2937" FontSize="14" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Option B -->
+                    <Border x:Name="OptBorderB" BackgroundColor="White" Stroke="#D1D5DB" StrokeThickness="1.5" Padding="14" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOptionBTapped" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Text="B" TextColor="#1E3A8A" FontSize="15" FontAttributes="Bold" WidthRequest="26" VerticalOptions="Center" />
+                            <Label x:Name="OptTextB" Grid.Column="1" Text="Option B text" TextColor="#1F2937" FontSize="14" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Option C -->
+                    <Border x:Name="OptBorderC" BackgroundColor="White" Stroke="#D1D5DB" StrokeThickness="1.5" Padding="14" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOptionCTapped" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Text="C" TextColor="#1E3A8A" FontSize="15" FontAttributes="Bold" WidthRequest="26" VerticalOptions="Center" />
+                            <Label x:Name="OptTextC" Grid.Column="1" Text="Option C text" TextColor="#1F2937" FontSize="14" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Option D -->
+                    <Border x:Name="OptBorderD" BackgroundColor="White" Stroke="#D1D5DB" StrokeThickness="1.5" Padding="14" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOptionDTapped" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Text="D" TextColor="#1E3A8A" FontSize="15" FontAttributes="Bold" WidthRequest="26" VerticalOptions="Center" />
+                            <Label x:Name="OptTextD" Grid.Column="1" Text="Option D text" TextColor="#1F2937" FontSize="14" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Explanation & Solution Card (Visible after answering) -->
+                <Border x:Name="ExplanationCard" IsVisible="False" BackgroundColor="#EFF6FF" Stroke="#93C5FD" StrokeThickness="1" Padding="16" StrokeShape="RoundRectangle 12">
+                    <VerticalStackLayout Spacing="10">
+                        <Label x:Name="ResultHeaderLabel" Text="✓ Correct Answer: Option B" TextColor="#166534" FontSize="15" FontAttributes="Bold" />
+                        
+                        <Label Text="In-Depth Option Breakdown:" TextColor="#1E3A8A" FontSize="13" FontAttributes="Bold" />
+                        <Label x:Name="ExplanationTextLabel" Text="Detailed explanation..." TextColor="#374151" FontSize="13" LineHeight="1.25" />
+
+                        <!-- Memory Hook / Shortcut Box -->
+                        <Border x:Name="TipBox" BackgroundColor="#FEF3C7" Stroke="#FCD34D" StrokeThickness="1" Padding="12" StrokeShape="RoundRectangle 8">
+                            <Label x:Name="TipTextLabel" Text="► Shortcut tip..." TextColor="#92400E" FontSize="12" FontAttributes="Bold" />
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation Bar -->
+        <Border Grid.Row="3" BackgroundColor="White" Stroke="#E5E7EB" StrokeThickness="1" Padding="16,12">
+            <Grid ColumnDefinitions="*,*,*">
+                <Button x:Name="PrevBtn" Text="◀ Prev" BackgroundColor="#E5E7EB" TextColor="#374151" CornerRadius="8" HeightRequest="44" FontAttributes="Bold" Clicked="OnPrevClicked" />
+                <Button x:Name="FinishBtn" Grid.Column="1" Text="Finish" BackgroundColor="#DC2626" TextColor="White" CornerRadius="8" HeightRequest="44" FontAttributes="Bold" Margin="8,0" Clicked="OnFinishClicked" />
+                <Button x:Name="NextBtn" Grid.Column="2" Text="Next ▶" BackgroundColor="#1E3A8A" TextColor="White" CornerRadius="8" HeightRequest="44" FontAttributes="Bold" Clicked="OnNextClicked" />
+            </Grid>
+        </Border>
+    </Grid>
+
+</ContentPage>

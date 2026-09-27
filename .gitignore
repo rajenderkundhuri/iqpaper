@@ -1,0 +1,18 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Paper PDFs are intentionally kept out of this source-only repository.
+Resources/Raw/pdfs/
+
+# Local screenshots and verification artifacts.
+/*_screen*.png
+/*_screenshot*.png
+/*_verified*.png
+/live_launch.png
+/main_screenshot.png
+/explanation_final.png
+/dashboard_final.png
+/duplicate_audit_report.json
